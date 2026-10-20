@@ -1,4 +1,4 @@
-package org.parking_lot.service;
+package org.parking_lot.strategy.payment;
 
 import org.parking_lot.model.Ticket;
 

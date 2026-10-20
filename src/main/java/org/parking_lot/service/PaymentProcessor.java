@@ -1,6 +1,7 @@
 package org.parking_lot.service;
 
 import org.parking_lot.model.Ticket;
+import org.parking_lot.strategy.payment.PaymentStrategy;
 
 public class PaymentProcessor {
     PaymentStrategy strategy;
