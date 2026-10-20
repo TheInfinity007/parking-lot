@@ -31,15 +31,15 @@ public class ParkingLot {
         this.pricingStrategy = pricingStrategy;
     }
 
-    void addFloor(){
-
+    public void addFloor(ParkingFloor floor) {
+        this.floors.put(floor.getId(), floor);
     }
 
-    Ticket parkVehicle(Vehicle vehicle, LocalDateTime entryTime){
+    Ticket parkVehicle(Vehicle vehicle, LocalDateTime entryTime) {
         return new Ticket();
     }
 
-    Ticket unparkVehicle(Vehicle vehicle, LocalDateTime exitTime, PaymentStrategy paymentMode){
+    Ticket unparkVehicle(Vehicle vehicle, LocalDateTime exitTime, PaymentStrategy paymentMode) {
         return new Ticket();
     }
 }

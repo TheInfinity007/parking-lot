@@ -5,12 +5,16 @@ import org.parking_lot.enums.VehicleType;
 import java.util.Map;
 
 public class ParkingFloor {
-    String id;
+    private String id;
 
-    Map<String, ParkingSpot> spots;
+    private Map<String, ParkingSpot> spots;
 
     public ParkingFloor(String id) {
         this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 
     void findAvailableSpots(VehicleType vehicleType){
@@ -18,6 +22,6 @@ public class ParkingFloor {
     }
 
     public void addSpot(ParkingSpot parkingSpot) {
-        spots.put(parkingSpot.id, parkingSpot);
+        spots.put(parkingSpot.getId(), parkingSpot);
     }
 }
