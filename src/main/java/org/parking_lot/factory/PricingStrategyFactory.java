@@ -6,7 +6,7 @@ import org.parking_lot.service.PricingStrategy;
 import org.parking_lot.service.TimeBasedPricing;
 
 public class PricingStrategyFactory {
-    PricingStrategy get(PricingStrategyType type) {
+    static public PricingStrategy get(PricingStrategyType type) {
         if (type == null) {
             throw new IllegalArgumentException("PricingStrategy type cannot be null");
         }

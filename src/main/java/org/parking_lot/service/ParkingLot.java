@@ -27,6 +27,10 @@ public class ParkingLot {
         return instance;
     }
 
+    public void setPricingStrategy(PricingStrategy pricingStrategy) {
+        this.pricingStrategy = pricingStrategy;
+    }
+
     void addFloor(){
 
     }

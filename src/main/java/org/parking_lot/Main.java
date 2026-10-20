@@ -1,5 +1,7 @@
 package org.parking_lot;
 
+import org.parking_lot.enums.PricingStrategyType;
+import org.parking_lot.factory.PricingStrategyFactory;
 import org.parking_lot.model.EntryGate;
 import org.parking_lot.model.ExitGate;
 import org.parking_lot.service.ParkingLot;
@@ -12,6 +14,6 @@ public class Main {
         EntryGate entryGate = new EntryGate("EG1");
         ExitGate exitGate = new ExitGate("XG1");
 
-
+        lot.setPricingStrategy(PricingStrategyFactory.get(PricingStrategyType.EVENT_BASED));
     }
 }
