@@ -2,9 +2,9 @@ package org.parking_lot.model;
 
 import org.parking_lot.enums.VehicleType;
 
-abstract public class Vehicle {
-    private VehicleType type;
-    private String number;
+public abstract class Vehicle {
+    private final VehicleType type;
+    private final String number;
 
     public Vehicle(String number, VehicleType type) {
         this.number = number;
