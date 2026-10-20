@@ -23,11 +23,19 @@ public class ParkingFloor {
         return spots;
     }
 
-    void findAvailableSpots(VehicleType vehicleType){
-
+    public void addSpot(ParkingSpot spot) {
+        spots.put(spot.getId(), spot);
     }
 
-    public void addSpot(ParkingSpot parkingSpot) {
-        spots.put(parkingSpot.getId(), parkingSpot);
+    public ParkingSpot findAvailableSpots(VehicleType vehicleType){
+        for(ParkingSpot spot: spots.values()){
+            if(spot.getAllowedType() == vehicleType && spot.tryOccupy()){
+                return spot;
+            }
+        }
+
+        return null;
     }
+
+
 }
