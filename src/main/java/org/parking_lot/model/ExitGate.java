@@ -1,0 +1,17 @@
+package org.parking_lot.model;
+
+import org.parking_lot.enums.GateType;
+import org.parking_lot.service.PaymentStrategy;
+
+import java.time.LocalDateTime;
+
+public class ExitGate extends Gate{
+
+    public ExitGate() {
+        super(GateType.Exit);
+    }
+
+    public void unparkVehicle(String ticketId, LocalDateTime exitTime, PaymentStrategy paymentMode){
+
+    }
+}
