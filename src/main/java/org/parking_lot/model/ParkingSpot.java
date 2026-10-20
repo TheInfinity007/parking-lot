@@ -9,6 +9,12 @@ public class ParkingSpot {
     VehicleType allowedType;
     AtomicBoolean occupied;
 
+    public ParkingSpot(String id, VehicleType vehicleType) {
+        this.id = id;
+        this.allowedType = vehicleType;
+        this.occupied = new AtomicBoolean(false);
+    }
+
     boolean tryOccupy(){
         return false;
     }
