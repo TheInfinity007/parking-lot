@@ -8,20 +8,20 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkingLotService {
-    private ParkingLotService instance;
+public class ParkingLot {
+    static private ParkingLot instance;
     Map<String, Floor> floors;
     Map<String, Ticket> activeTickets;
     PricingStrategy pricingStrategy;
 
-    private ParkingLotService() {
+    private ParkingLot() {
         this.floors = new HashMap<>();
         this.activeTickets = new HashMap<>();
     }
 
-    public ParkingLotService getInstance() {
+    public static ParkingLot getInstance() {
         if (instance == null) {
-            instance = new ParkingLotService();
+            instance = new ParkingLot();
         }
 
         return instance;
