@@ -5,9 +5,9 @@ import org.parking_lot.enums.VehicleType;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ParkingSpot {
-    private String id;
-    private VehicleType allowedType;
-    private AtomicBoolean occupied;
+    private final String id;
+    private final VehicleType allowedType;
+    private final AtomicBoolean occupied;
 
     public ParkingSpot(String id, VehicleType vehicleType) {
         this.id = id;
@@ -25,10 +25,11 @@ public class ParkingSpot {
 
 
     boolean tryOccupy() {
-        return false;
+        return occupied.compareAndSet(false, true);
     }
 
     void vacant() {
+        occupied.set(false);
     }
 
     public boolean isOccupied() {
