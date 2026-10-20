@@ -47,5 +47,18 @@ public class Main {
         System.out.println("-----------------------------------------");
 
         lot.printStatus();
+
+/*
+        Vehicle bike1 = VehicleFactory.create("KA01AB1234", VehicleType.BIKE);
+        Vehicle bike2 = VehicleFactory.create("KA01AB1234", VehicleType.BIKE);
+        LocalDateTime entryTimeBike = DateTimeParser.parse("21 May 7:03 AM 2025");
+
+        Thread t1 = new Thread(() -> entryGate.parkVehicle(bike1, entryTimeBike));
+        Thread t2 = new Thread(() -> entryGate.parkVehicle(bike2, entryTimeBike));
+
+        t1.start();
+        t2.start();
+
+ */
     }
 }
