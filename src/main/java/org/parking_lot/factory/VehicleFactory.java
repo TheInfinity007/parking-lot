@@ -6,7 +6,7 @@ import org.parking_lot.model.Car;
 import org.parking_lot.model.Vehicle;
 
 public class VehicleFactory {
-    Vehicle create(String number, VehicleType type) {
+    public static Vehicle create(String number, VehicleType type) {
 
         if (type == null) {
             throw new IllegalArgumentException("Vehicle type cannot be null");

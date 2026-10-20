@@ -3,11 +3,12 @@ package org.parking_lot;
 import org.parking_lot.enums.PricingStrategyType;
 import org.parking_lot.enums.VehicleType;
 import org.parking_lot.factory.PricingStrategyFactory;
-import org.parking_lot.model.EntryGate;
-import org.parking_lot.model.ExitGate;
-import org.parking_lot.model.ParkingFloor;
-import org.parking_lot.model.ParkingSpot;
+import org.parking_lot.factory.VehicleFactory;
+import org.parking_lot.model.*;
 import org.parking_lot.service.ParkingLot;
+import org.parking_lot.utils.DateTimeParser;
+
+import java.time.LocalDateTime;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -28,5 +29,10 @@ public class Main {
         lot.addFloor(floor1);
 
         System.out.println("-----------------------------------------");
+
+        Vehicle car = VehicleFactory.create("KA01AB1234", VehicleType.CAR);
+        LocalDateTime entryTime = DateTimeParser.parse("21 May 7:03 AM 2025");
+
+        System.out.println("entryTime = " + entryTime);
     }
 }
