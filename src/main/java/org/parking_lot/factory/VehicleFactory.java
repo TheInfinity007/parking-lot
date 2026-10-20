@@ -3,6 +3,7 @@ package org.parking_lot.factory;
 import org.parking_lot.enums.VehicleType;
 import org.parking_lot.model.Bike;
 import org.parking_lot.model.Car;
+import org.parking_lot.model.Truck;
 import org.parking_lot.model.Vehicle;
 
 public class VehicleFactory {
@@ -17,6 +18,8 @@ public class VehicleFactory {
                 return new Bike(number);
             case CAR:
                 return new Car(number);
+            case TRUCK:
+                return new Truck(number);
             default:
                 throw new IllegalArgumentException("Unsupported vehicle type: " + type);
         }
