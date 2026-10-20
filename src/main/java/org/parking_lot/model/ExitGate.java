@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 
 public class ExitGate extends Gate{
 
-    public ExitGate() {
-        super(GateType.Exit);
+    public ExitGate(String gateId) {
+        super(GateType.Exit, gateId);
     }
 
     public void unparkVehicle(String ticketId, LocalDateTime exitTime, PaymentStrategy paymentMode){

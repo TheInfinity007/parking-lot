@@ -6,8 +6,9 @@ abstract class Gate {
     String id;
     GateType gateType;
 
-    public Gate(GateType gateType) {
+    public Gate(GateType gateType, String gateId) {
         this.gateType = gateType;
+        this.id = gateId;
     }
 
     public GateType getType() {

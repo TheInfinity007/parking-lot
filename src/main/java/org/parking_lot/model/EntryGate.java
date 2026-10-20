@@ -6,8 +6,9 @@ import java.time.LocalDateTime;
 
 public class EntryGate extends Gate {
 
-    EntryGate(){
-        super(GateType.Entry);
+    public EntryGate(String gateId){
+
+        super(GateType.Entry, gateId);
     }
 
     Ticket parkVehicle(Vehicle vehicle, LocalDateTime entryTime){
