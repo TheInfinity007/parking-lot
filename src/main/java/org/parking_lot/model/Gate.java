@@ -2,16 +2,16 @@ package org.parking_lot.model;
 
 import org.parking_lot.enums.GateType;
 
-abstract class Gate {
-    String id;
-    GateType gateType;
+public abstract class Gate {
+    private final String id;
 
-    public Gate(GateType gateType, String gateId) {
-        this.gateType = gateType;
+    public Gate(String gateId) {
         this.id = gateId;
     }
 
-    public GateType getType() {
-        return this.gateType;
+    public String getId() {
+        return id;
     }
+
+    public abstract GateType getType();
 }
