@@ -12,10 +12,6 @@ public class VehicleFactory {
             throw new IllegalArgumentException("Vehicle type cannot be null");
         }
 
-        if (type == VehicleType.valueOf("BIKE")) {
-            return new Bike(number);
-        }
-
         switch (type) {
             case BIKE:
                 return new Bike(number);

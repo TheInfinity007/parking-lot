@@ -11,5 +11,7 @@ public class Main {
         ParkingLot lot = ParkingLot.getInstance();
         EntryGate entryGate = new EntryGate("EG1");
         ExitGate exitGate = new ExitGate("XG1");
+
+
     }
 }
