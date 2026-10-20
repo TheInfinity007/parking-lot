@@ -1,6 +1,7 @@
 package org.parking_lot.service;
 
 import org.parking_lot.model.ParkingFloor;
+import org.parking_lot.model.ParkingSpot;
 import org.parking_lot.model.Ticket;
 import org.parking_lot.model.Vehicle;
 
@@ -41,5 +42,15 @@ public class ParkingLot {
 
     Ticket unparkVehicle(Vehicle vehicle, LocalDateTime exitTime, PaymentStrategy paymentMode) {
         return new Ticket();
+    }
+
+   public void printStatus(){
+        for(ParkingFloor floor: floors.values() ){
+            System.out.println("Floor " + floor.getId());
+
+            for(ParkingSpot spot: floor.getSpots().values()){
+                System.out.println("  Spot " + spot.getId() + " [" + spot.getAllowedType() + "] - " + (spot.isOccupied() ? "Occupied": "Free"));
+            }
+        }
     }
 }

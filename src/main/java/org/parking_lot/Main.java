@@ -1,5 +1,6 @@
 package org.parking_lot;
 
+import org.parking_lot.enums.PaymentMode;
 import org.parking_lot.enums.PricingStrategyType;
 import org.parking_lot.enums.VehicleType;
 import org.parking_lot.factory.PricingStrategyFactory;
@@ -33,6 +34,18 @@ public class Main {
         Vehicle car = VehicleFactory.create("KA01AB1234", VehicleType.CAR);
         LocalDateTime entryTime = DateTimeParser.parse("21 May 7:03 AM 2025");
 
-        System.out.println("entryTime = " + entryTime);
+        Ticket ticket = entryGate.parkVehicle(car, entryTime);
+        System.out.println("-----------------------------------------");
+
+        lot.printStatus();
+
+        System.out.println("-----------------------------------------");
+
+        LocalDateTime exitTime = DateTimeParser.parse("21 May 1:15 PM 2025");
+        exitGate.unparkVehicle(ticket.getTicketId(), exitTime, PaymentMode.CARD);
+
+        System.out.println("-----------------------------------------");
+
+        lot.printStatus();
     }
 }

@@ -19,6 +19,10 @@ public class ParkingFloor {
         return id;
     }
 
+    public Map<String, ParkingSpot> getSpots() {
+        return spots;
+    }
+
     void findAvailableSpots(VehicleType vehicleType){
 
     }

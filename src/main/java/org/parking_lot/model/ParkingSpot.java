@@ -19,19 +19,21 @@ public class ParkingSpot {
         return id;
     }
 
-    boolean tryOccupy(){
+    public VehicleType getAllowedType() {
+        return allowedType;
+    }
+
+
+    boolean tryOccupy() {
         return false;
     }
 
-    void vacant(){
+    void vacant() {
     }
 
-    boolean isOccupied(){
-        return false;
+    public boolean isOccupied() {
+        return occupied.get();
     }
-
-
-
 
 
 }
