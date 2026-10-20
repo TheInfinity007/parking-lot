@@ -1,6 +1,6 @@
 package org.parking_lot.service;
 
-import org.parking_lot.model.Floor;
+import org.parking_lot.model.ParkingFloor;
 import org.parking_lot.model.Ticket;
 import org.parking_lot.model.Vehicle;
 
@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class ParkingLot {
     static private ParkingLot instance;
-    Map<String, Floor> floors;
+    Map<String, ParkingFloor> floors;
     Map<String, Ticket> activeTickets;
     PricingStrategy pricingStrategy;
 

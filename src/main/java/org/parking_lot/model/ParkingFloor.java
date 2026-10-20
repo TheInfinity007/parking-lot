@@ -4,7 +4,7 @@ import org.parking_lot.enums.VehicleType;
 
 import java.util.Map;
 
-public class Floor {
+public class ParkingFloor {
     int id;
 
     Map<String, ParkingSpot> spots;
