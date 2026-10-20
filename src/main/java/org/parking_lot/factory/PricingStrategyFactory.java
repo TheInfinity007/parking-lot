@@ -1,9 +1,9 @@
 package org.parking_lot.factory;
 
 import org.parking_lot.enums.PricingStrategyType;
-import org.parking_lot.service.EventBasePricing;
-import org.parking_lot.service.PricingStrategy;
-import org.parking_lot.service.TimeBasedPricing;
+import org.parking_lot.strategy.pricing.EventBasePricing;
+import org.parking_lot.strategy.pricing.PricingStrategy;
+import org.parking_lot.strategy.pricing.TimeBasedPricing;
 
 public class PricingStrategyFactory {
     static public PricingStrategy get(PricingStrategyType type) {

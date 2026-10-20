@@ -1,10 +1,10 @@
-package org.parking_lot.service;
+package org.parking_lot.strategy.pricing;
 
 import org.parking_lot.enums.VehicleType;
 
 import java.time.LocalDateTime;
 
-public class TimeBasedPricing implements PricingStrategy{
+public class TimeBasedPricing implements PricingStrategy {
 
     @Override
     public double calculateFee(VehicleType type, LocalDateTime entryTime, LocalDateTime exitTime) {

@@ -5,6 +5,7 @@ import org.parking_lot.model.ParkingSpot;
 import org.parking_lot.model.Ticket;
 import org.parking_lot.model.Vehicle;
 import org.parking_lot.strategy.payment.PaymentStrategy;
+import org.parking_lot.strategy.pricing.PricingStrategy;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
