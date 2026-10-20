@@ -9,7 +9,7 @@ public class EntryGate extends Gate {
 
     public EntryGate(String gateId){
 
-        super(GateType.Entry, gateId);
+        super(GateType.ENTRY, gateId);
     }
 
     public Ticket parkVehicle(Vehicle vehicle, LocalDateTime entryTime){
