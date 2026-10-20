@@ -26,5 +26,7 @@ public class Main {
         floor1.addSpot(new ParkingSpot("F1S4", VehicleType.CAR));
 
         lot.addFloor(floor1);
+
+        System.out.println("-----------------------------------------");
     }
 }
