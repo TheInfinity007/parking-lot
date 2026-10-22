@@ -24,11 +24,11 @@ public class ParkingSpot {
     }
 
 
-    boolean tryOccupy() {
+    public boolean tryOccupy() {
         return occupied.compareAndSet(false, true);
     }
 
-    void vacant() {
+    public void vacant() {
         occupied.set(false);
     }
 

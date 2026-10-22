@@ -23,6 +23,10 @@ public class ParkingFloor {
         return spots;
     }
 
+    public ParkingSpot getSpot(String spotId){
+        return spots.get(spotId);
+    }
+
     public void addSpot(ParkingSpot spot) {
         spots.put(spot.getId(), spot);
     }

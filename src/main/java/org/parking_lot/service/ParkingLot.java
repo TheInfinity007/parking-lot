@@ -24,9 +24,9 @@ public class ParkingLot {
     }
 
     public static ParkingLot getInstance() {
-        if (instance == null) {
-            instance = new ParkingLot();
-        }
+//        if (instance == null) {
+//            instance = new ParkingLot();
+//        }
 
         return instance;
     }
@@ -39,23 +39,53 @@ public class ParkingLot {
         this.floors.put(floor.getId(), floor);
     }
 
-    public Ticket parkVehicle(Vehicle vehicle, LocalDateTime entryTime) {
+    public synchronized Ticket parkVehicle(Vehicle vehicle, LocalDateTime entryTime) {
 
-        String ticketId = UUID.randomUUID().toString();
-        System.out.println("Vehicle parked. Ticket: " + ticketId);
-        return new Ticket(ticketId, entryTime, vehicle);
+        for (ParkingFloor floor : floors.values()) {
+
+            ParkingSpot spot = floor.findAvailableSpots(vehicle.getType());
+
+            if (spot != null) {
+                String ticketId = UUID.randomUUID().toString();
+                Ticket ticket = Ticket.builder()
+                        .ticketId(ticketId)
+                        .entryTime(entryTime)
+                        .vehicle(vehicle)
+                        .floorId(floor.getId())
+                        .spotId(spot.getId())
+                        .build();
+
+                activeTickets.put(ticketId, ticket);
+
+                System.out.println("Vehicle parked. Ticket: " + ticketId);
+                return ticket;
+            }
+        }
+
+        System.out.println("No spot available for vehicle type: " + vehicle.getType());
+        return null;
     }
 
     public Ticket unparkVehicle(String ticketId, LocalDateTime exitTime, PaymentMode paymentMode) {
-        return new Ticket();
+        Ticket ticket = activeTickets.get(ticketId);
+
+        ParkingFloor floor = floors.get(ticket.getFloorId());
+        ParkingSpot spot = floor.getSpot(ticket.getSpotId());
+
+        //
+
+        spot.vacant();
+        activeTickets.remove(ticketId);
+
+        return ticket;
     }
 
-   public void printStatus(){
-        for(ParkingFloor floor: floors.values() ){
+    public void printStatus() {
+        for (ParkingFloor floor : floors.values()) {
             System.out.println("Floor " + floor.getId());
 
-            for(ParkingSpot spot: floor.getSpots().values()){
-                System.out.println("  Spot " + spot.getId() + " [" + spot.getAllowedType() + "] - " + (spot.isOccupied() ? "Occupied": "Free"));
+            for (ParkingSpot spot : floor.getSpots().values()) {
+                System.out.println("  Spot " + spot.getId() + " [" + spot.getAllowedType() + "] - " + (spot.isOccupied() ? "Occupied" : "Free"));
             }
         }
     }
