@@ -5,12 +5,12 @@ import org.parking_lot.enums.PaymentStatus;
 import java.time.LocalDateTime;
 
 public class Ticket {
-    String ticketId;
-    LocalDateTime entryTime;
-    String floorId;
-    String spotId;
-    Vehicle vehicle;
-    PaymentStatus paymentStatus;
+    private final String ticketId;
+    private final LocalDateTime entryTime;
+    private final String floorId;
+    private final String spotId;
+    private final Vehicle vehicle;
+    private PaymentStatus paymentStatus;
 
     public Ticket(String ticketId, LocalDateTime entryTime, Vehicle vehicle, String floorId, String spotId) {
         this.ticketId = ticketId;
