@@ -13,7 +13,7 @@ public class PaymentProcessor {
 
     boolean pay(Ticket ticket, double amount) {
         boolean success = strategy.processPayment(ticket, amount);
-        if(success){
+        if (success) {
             ticket.setPaymentStatus(PaymentStatus.SUCCESS);
         } else {
             ticket.setPaymentStatus(PaymentStatus.PENDING);
