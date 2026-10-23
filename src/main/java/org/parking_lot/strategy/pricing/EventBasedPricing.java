@@ -1,14 +1,13 @@
 package org.parking_lot.strategy.pricing;
 
 import org.parking_lot.enums.VehicleType;
-import org.parking_lot.model.Bike;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.EnumMap;
 import java.util.Map;
 
-public class EventBasePricing implements PricingStrategy {
+public class EventBasedPricing implements PricingStrategy {
 
     private final Map<VehicleType, Double> EVENT_HOURLY_RATES = new EnumMap<>(Map.of(
                     VehicleType.BIKE, 30.0,
