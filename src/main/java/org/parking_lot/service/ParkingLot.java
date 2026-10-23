@@ -66,23 +66,30 @@ public class ParkingLot {
         return null;
     }
 
-    public Ticket unparkVehicle(String ticketId, LocalDateTime exitTime, PaymentMode paymentMode) {
+    public void unparkVehicle(String ticketId, LocalDateTime exitTime, PaymentMode paymentMode) {
         Ticket ticket = activeTickets.get(ticketId);
+        if (ticket == null) {
+            System.out.println("Invalid ticket ID.");
+            return;
+        }
 
-        ParkingFloor floor = floors.get(ticket.getFloorId());
-        ParkingSpot spot = floor.getSpot(ticket.getSpotId());
+        double parkingFee = pricingStrategy.calculateFee(ticket.getVehicle().getType(), ticket.getEntryTime(), exitTime);
 
 
         PaymentStrategy strategy = PaymentStrategyFactory.get(paymentMode);
-
-        double parkingFee = pricingStrategy.calculateFee(ticket.getVehicle().getType(), ticket.getEntryTime(), exitTime);
         PaymentProcessor processor = new PaymentProcessor(strategy);
-        processor.pay(ticket, parkingFee);
+        boolean paid = processor.pay(ticket, parkingFee);
+        if (!paid) {
+            System.out.println("Vehicle cannot exit. Payment unsuccessful.");
+            return;
+        }
 
+        ParkingSpot spot = floors.get(ticket.getFloorId()).getSpot(ticket.getSpotId());
         spot.vacant();
+
         activeTickets.remove(ticketId);
 
-        return ticket;
+        System.out.println("Vehicle exited. Fee charged: Rs " + parkingFee);
     }
 
     public void printStatus() {
