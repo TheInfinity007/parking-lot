@@ -1,34 +1,34 @@
 package org.parking_lot.service;
 
 import org.parking_lot.enums.PaymentMode;
+import org.parking_lot.enums.PricingStrategyType;
+import org.parking_lot.factory.PaymentStrategyFactory;
+import org.parking_lot.factory.PricingStrategyFactory;
 import org.parking_lot.model.ParkingFloor;
 import org.parking_lot.model.ParkingSpot;
 import org.parking_lot.model.Ticket;
 import org.parking_lot.model.Vehicle;
+import org.parking_lot.strategy.payment.PaymentStrategy;
 import org.parking_lot.strategy.pricing.PricingStrategy;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ParkingLot {
-    static private ParkingLot instance;
-    Map<String, ParkingFloor> floors;
-    Map<String, Ticket> activeTickets;
-    PricingStrategy pricingStrategy;
+    private static final ParkingLot INSTANCE = new ParkingLot();
+    private final Map<String, ParkingFloor> floors = new ConcurrentHashMap<>();
+    private final Map<String, Ticket> activeTickets = new ConcurrentHashMap<>();
+    private PricingStrategy pricingStrategy;
 
     private ParkingLot() {
-        this.floors = new HashMap<>();
-        this.activeTickets = new HashMap<>();
+        this.pricingStrategy = PricingStrategyFactory.get(PricingStrategyType.EVENT_BASED);
     }
 
     public static ParkingLot getInstance() {
-//        if (instance == null) {
-//            instance = new ParkingLot();
-//        }
-
-        return instance;
+        return INSTANCE;
     }
 
     public void setPricingStrategy(PricingStrategy pricingStrategy) {
@@ -72,7 +72,12 @@ public class ParkingLot {
         ParkingFloor floor = floors.get(ticket.getFloorId());
         ParkingSpot spot = floor.getSpot(ticket.getSpotId());
 
-        //
+
+        PaymentStrategy strategy = PaymentStrategyFactory.get(paymentMode);
+
+        double parkingFee = pricingStrategy.calculateFee(ticket.getVehicle().getType(), ticket.getEntryTime(), exitTime);
+        PaymentProcessor processor = new PaymentProcessor(strategy);
+        processor.pay(ticket, parkingFee);
 
         spot.vacant();
         activeTickets.remove(ticketId);

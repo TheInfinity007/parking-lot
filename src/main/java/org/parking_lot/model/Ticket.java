@@ -5,15 +5,15 @@ import org.parking_lot.enums.PaymentStatus;
 import java.time.LocalDateTime;
 
 public class Ticket {
-    String id;
+    String ticketId;
     LocalDateTime entryTime;
     String floorId;
     String spotId;
     Vehicle vehicle;
     PaymentStatus paymentStatus;
 
-    public Ticket(String id, LocalDateTime entryTime, Vehicle vehicle, String floorId, String spotId) {
-        this.id = id;
+    public Ticket(String ticketId, LocalDateTime entryTime, Vehicle vehicle, String floorId, String spotId) {
+        this.ticketId = ticketId;
         this.entryTime = entryTime;
         this.vehicle = vehicle;
         this.floorId = floorId;
@@ -26,7 +26,7 @@ public class Ticket {
     }
 
     public String getTicketId() {
-        return id;
+        return ticketId;
     }
 
     public String getFloorId() {
@@ -37,12 +37,20 @@ public class Ticket {
         return spotId;
     }
 
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public LocalDateTime getEntryTime() {
+        return entryTime;
+    }
+
     public void setPaymentStatus(PaymentStatus paymentStatus) {
         this.paymentStatus = paymentStatus;
     }
 
     public static class Builder {
-        private String id;
+        private String ticketId;
         private LocalDateTime entryTime;
         private String floorId;
         private String spotId;
@@ -53,7 +61,7 @@ public class Ticket {
         }
 
         public Builder ticketId(String ticketId) {
-            this.id = ticketId;
+            this.ticketId = ticketId;
             return this;
         }
 
@@ -78,7 +86,7 @@ public class Ticket {
         }
 
         public Ticket build() {
-            return new Ticket(id, entryTime, vehicle, floorId, spotId);
+            return new Ticket(ticketId, entryTime, vehicle, floorId, spotId);
         }
     }
 
