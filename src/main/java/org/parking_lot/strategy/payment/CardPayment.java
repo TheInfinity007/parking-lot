@@ -5,6 +5,7 @@ import org.parking_lot.model.Ticket;
 public class CardPayment implements PaymentStrategy {
     @Override
     public boolean pay(Ticket ticket, int amount) {
-        return false;
+        System.out.println("Paid Rs " + amount + " for ticket " + ticket.getTicketId() + " via Card.");
+        return true;
     }
 }
