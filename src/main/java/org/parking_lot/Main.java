@@ -19,7 +19,7 @@ public class Main {
         EntryGate entryGate = new EntryGate("EG1");
         ExitGate exitGate = new ExitGate("XG1");
 
-        lot.setPricingStrategy(PricingStrategyFactory.get(PricingStrategyType.EVENT_BASED));
+        lot.setPricingStrategy(PricingStrategyFactory.get(PricingStrategyType.TIME_BASED));
 
         ParkingFloor floor1 = new ParkingFloor("Floor1");
         floor1.addSpot(new ParkingSpot("F1S1", VehicleType.BIKE));

@@ -21,7 +21,7 @@ public class TimeBasedPricing implements PricingStrategy {
 
     @Override
     public double calculateFee(VehicleType type, LocalDateTime entryTime, LocalDateTime exitTime) {
-        if (entryTime.isBefore(exitTime)) {
+        if (exitTime.isBefore(entryTime)) {
             throw new IllegalArgumentException("Exit time before entry time");
         }
 
@@ -46,13 +46,13 @@ public class TimeBasedPricing implements PricingStrategy {
             cursor = cursor.plusHours(1);
         }
 
-        double peakRate = switch(type){
+        double peakRate = switch (type) {
             case CAR -> 30.0;
             case BIKE -> 15.0;
             case TRUCK -> 50;
         };
 
-        double nonPeakRate = switch(type){
+        double nonPeakRate = switch (type) {
             case CAR -> 20.0;
             case BIKE -> 10.0;
             case TRUCK -> 30;
