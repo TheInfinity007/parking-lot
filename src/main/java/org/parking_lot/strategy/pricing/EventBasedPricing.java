@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class EventBasedPricing implements PricingStrategy {
 
-    private final Map<VehicleType, Double> EVENT_HOURLY_RATES = new EnumMap<>(Map.of(
+    private static final Map<VehicleType, Double> EVENT_HOURLY_RATES = new EnumMap<>(Map.of(
                     VehicleType.BIKE, 30.0,
                     VehicleType.CAR, 50.0,
                     VehicleType.TRUCK, 70.0

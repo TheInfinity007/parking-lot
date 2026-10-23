@@ -12,8 +12,8 @@ import java.time.temporal.Temporal;
 public class TimeBasedPricing implements PricingStrategy {
 
     // Peak period hours (e.g., 8:00 to 17:00)
-    private final LocalTime PEAK_START = LocalTime.of(8, 0);
-    private final LocalTime PEAK_END = LocalTime.of(17, 0);
+    private static final LocalTime PEAK_START = LocalTime.of(8, 0);
+    private static final LocalTime PEAK_END = LocalTime.of(17, 0);
 
     private boolean isPeak(LocalTime time) {
         return time.isAfter(PEAK_START) && time.isBefore(PEAK_END);
