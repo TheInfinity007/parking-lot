@@ -3,5 +3,5 @@ package org.parking_lot.strategy.payment;
 import org.parking_lot.model.Ticket;
 
 public interface PaymentStrategy {
-    boolean pay(Ticket ticket, int amount);
+    boolean processPayment(Ticket ticket, double amount);
 }

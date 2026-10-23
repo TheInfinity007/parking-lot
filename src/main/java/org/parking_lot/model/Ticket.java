@@ -29,12 +29,16 @@ public class Ticket {
         return id;
     }
 
-    public String getFloorId(){
+    public String getFloorId() {
         return floorId;
     }
 
-    public String getSpotId(){
+    public String getSpotId() {
         return spotId;
+    }
+
+    public void setPaymentStatus(PaymentStatus paymentStatus) {
+        this.paymentStatus = paymentStatus;
     }
 
     public static class Builder {
@@ -48,32 +52,32 @@ public class Ticket {
         Builder() {
         }
 
-        public Builder ticketId(String ticketId){
+        public Builder ticketId(String ticketId) {
             this.id = ticketId;
             return this;
         }
 
-        public Builder entryTime(LocalDateTime entryTime){
+        public Builder entryTime(LocalDateTime entryTime) {
             this.entryTime = entryTime;
             return this;
         }
 
-        public Builder vehicle(Vehicle vehicle){
+        public Builder vehicle(Vehicle vehicle) {
             this.vehicle = vehicle;
             return this;
         }
 
-        public Builder floorId(String floorId){
+        public Builder floorId(String floorId) {
             this.floorId = floorId;
             return this;
         }
 
-        public Builder spotId(String spotId){
+        public Builder spotId(String spotId) {
             this.spotId = spotId;
             return this;
         }
 
-        public Ticket build(){
+        public Ticket build() {
             return new Ticket(id, entryTime, vehicle, floorId, spotId);
         }
     }
